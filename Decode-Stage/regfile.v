@@ -20,18 +20,19 @@ module regfile(
     REG[9] = 'h12012345;
     end
     
-    always@(posedge clk)begin
-        if(rst) begin
-        A_readdata1 <= 32'd0;
-        B_readdata2 <= 32'd0; end
-        else begin
-            if(regwrite) begin
-                REG[rd] <= writedata;
-            end
-            else begin
-                A_readdata1 <= REG[rs];
-                B_readdata2 <= REG[rt];
-            end
-        end
+    always @(posedge clk) begin
+    if (!rst && regwrite && rd != 5'd0) begin
+        REG[rd] <= writedata;
     end
+end
+
+always @(*) begin
+    if (rst) begin
+        A_readdata1 = 32'd0;
+        B_readdata2 = 32'd0;
+    end else begin
+        A_readdata1 = (rs == 5'd0) ? 32'd0 : REG[rs];
+        B_readdata2 = (rt == 5'd0) ? 32'd0 : REG[rt];
+    end
+end
 endmodule
