@@ -19,7 +19,7 @@ module control(
     ex = 4'd0;
     end
     
-    always @(posedge clk) begin
+    always @(*) begin
         if(rst) begin
         wb = 2'd0;
         mem = 3'd0;
