@@ -46,9 +46,9 @@ else if (aluop == lwsw)
         select = ALUadd;
 else if (aluop == Itype)
         select = ALUsub;
-else if (aluop == unknown)
+else 
     begin
     select = ALUx;
-    end else begin select = ALUx end
+    end
 end
 endmodule
