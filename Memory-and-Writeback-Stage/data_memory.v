@@ -1,31 +1,4 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 11/13/2026 09:36:15 PM
-// Design Name: 
-// Module Name: data_memory
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
-
-/*Instantiates and serves as the data memory. 
-Its inputs are alu_result, rdata2out, memwrite, and memread, which stem from the EX/MEM latch.
-The output, read_data, goes to the MEM/WB latch. 
-If memread is true, then read_data is re-assigned as the value in current address. If memwrite is true,
-then read_data is unaltered, and instead, the value in the current address is changed to rdata2out. 
-*/
 module data_memory (
     input wire clk,
     input wire [31:0] addr, // Memory Address
@@ -64,11 +37,11 @@ $display("\tDMEM[%0d] = %0d", 255, DMEM[255]);
    always@(*) begin
       if (memread) // load
       begin
-      read_data <= DMEM[addr]; //grabs data at the address specified by the addr wire 
+      read_data = DMEM[addr]; //grabs data at the address specified by the addr wire 
       end
       if (memwrite) // store
       begin
-      DMEM[addr] <= write_data; //writes data to address specified by addr wire
+      DMEM[addr] = write_data; //writes data to address specified by addr wire
       end
    end
 endmodule // data_memory
