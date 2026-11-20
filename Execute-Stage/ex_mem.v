@@ -25,8 +25,8 @@ zero <= 0;
 alu_result <= 0; rdata2out <= 0;
 five_bit_muxout <= 0;
 end
-always@* begin
-#1 //Update Delay
+    always@(posedge clk) begin
+
 wb_ctlout <= ctlwb_out;
 branch <= ctlm_out[2];    
 memread <= ctlm_out[1];       
