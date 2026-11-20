@@ -1,6 +1,5 @@
 `timescale 1ns / 1ps
 module data_memory (
-    input wire clk,
     input wire [31:0] addr, // Memory Address
     input wire [31:0] write_data, // Memory Address Contents
 input wire memread, memwrite, // refer to Lab 2-2 Figure 2.2
