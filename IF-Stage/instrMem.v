@@ -17,7 +17,7 @@ module instrMem(
             mem[i] = 32'h80000000;
         end
 
-        // Load program instructions from instr.txt
+        // Load program instructions from instr.mem
         $readmemb("instr.mem", mem);
 
         // Optional console check in Vivado Tcl Console
