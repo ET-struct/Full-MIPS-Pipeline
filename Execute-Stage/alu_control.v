@@ -31,12 +31,12 @@ if (aluop == Rtype) begin
 case(funct)
 //assign the correct select value based on the function field.
 // Desired ALU action
-          FUNCTadd: select <= ALUadd;
-          FUNCTsub: select <= ALUsub;
-          FUNCTand: select <= ALUand;
-          FUNCTor: select <= ALUor;
-          FUNCTslt: select <= ALUslt;
-          default: select <= ALUx;
+          FUNCTadd: select = ALUadd;
+          FUNCTsub: select = ALUsub;
+          FUNCTand: select = ALUand;
+          FUNCTor: select = ALUor;
+          FUNCTslt: select = ALUslt;
+          default: select = ALUx;
           endcase
           end
  
@@ -49,6 +49,6 @@ else if (aluop == Itype)
 else if (aluop == unknown)
     begin
     select = ALUx;
-end
+    end else begin select = ALUx end
 end
 endmodule
