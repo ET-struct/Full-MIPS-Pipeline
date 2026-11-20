@@ -17,7 +17,7 @@ ALUand = 3'b000,
 ALUor = 3'b001,
 ALUslt = 3'b111;
  
-ALUx = 3'b011;
+parameter ALUx = 3'b011;  //for invalid opcode, ALUop = 2'b11
 // Funct Field
 parameter FUNCTadd = 6'b100000,
           FUNCTsub = 6'b100010,
