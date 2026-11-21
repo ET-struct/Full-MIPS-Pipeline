@@ -32,7 +32,7 @@
      +-----------------------------------------------(PCSrc, ex_mem_adder_out)----------+
 ```
 
-![Pipeline Architecture / Timing Diagram](images/[timing-diagram-filename].png)
+![Full Pipeline Waveform](images/FullMIPSPipelineDiagram.png)
 
 ---
 
@@ -44,8 +44,8 @@
 | **IF** | [`fetch.v`](https://github.com/ET-struct/Full-MIPS-Pipeline/blob/main/IF-Stage/fetch.v), [`pc.v`](https://github.com/ET-struct/Full-MIPS-Pipeline/blob/main/IF-Stage/pc.v), [`mux.v`](https://github.com/ET-struct/Full-MIPS-Pipeline/blob/main/IF-Stage/mux.v), [`incrementer.v`](https://github.com/ET-struct/Full-MIPS-Pipeline/blob/main/IF-Stage/incrementer.v), [`instrMem.v`](https://github.com/ET-struct/Full-MIPS-Pipeline/blob/main/IF-Stage/instrMem.v), [`ifIdLatch.v`](https://github.com/ET-struct/Full-MIPS-Pipeline/blob/main/IF-Stage/ifIdLatch.v) |
 | **ID** | [`decode.v`](https://github.com/ET-struct/Full-MIPS-Pipeline/blob/main/Decode-Stage/decode.v), [`control.v`](https://github.com/ET-struct/Full-MIPS-Pipeline/blob/main/Decode-Stage/control.v), [`regfile.v`](https://github.com/ET-struct/Full-MIPS-Pipeline/blob/main/Decode-Stage/regfile.v), [`signExtend.v`](https://github.com/ET-struct/Full-MIPS-Pipeline/blob/main/Decode-Stage/signExtend.v), [`idExLatch.v`](https://github.com/ET-struct/Full-MIPS-Pipeline/blob/main/Decode-Stage/idExLatch.v) |
 | **EX** | [`execute.v`](https://github.com/ET-struct/Full-MIPS-Pipeline/blob/main/Execute-Stage/execute.v), [`adder.v`](https://github.com/ET-struct/Full-MIPS-Pipeline/blob/main/Execute-Stage/adder.v), `alu.v`, `alu_control.v`, [`top_mux.v`](https://github.com/ET-struct/Full-MIPS-Pipeline/blob/main/Execute-Stage/top_mux.v), [`bottom_mux.v`](https://github.com/ET-struct/Full-MIPS-Pipeline/blob/main/Execute-Stage/bottom_mux.v), [`ex_mem.v`](https://github.com/ET-struct/Full-MIPS-Pipeline/blob/main/Execute-Stage/ex_mem.v) |
-| **MEM/WB** | `MEMORY.v`, `data_memory.v`, `mem_wb.v`, `AND.v`, `wb_mux.v` |
-| **Test / Init** | `FullMIPSPipelineTB.v`, `instr.txt`, `data.txt` |
+| **MEM/WB** | [`MEMORY.v`](), [`data_memory.v`](), [`mem_wb.v`](), [`AND.v`](), [`wb_mux.v`]() |
+| **Test / Init** | [`FullMIPSPipelineTB.v`](), `instr.mem`, `data.mem` |
 
 ##### Key Integration Fixes
 * **Control Encoding:** Packed in `control.v` as `ex = {RegDst, ALUOp[1:0], ALUSrc}`, `mem = {Branch, MemRead, MemWrite}`, and `wb = {RegWrite, MemtoReg}`.
@@ -56,18 +56,18 @@
 
 #### Verification
 Verified via behavioral simulation in **Xilinx Vivado 2022.2 (`xsim`)** using [`FullMIPSPipelineTB.v`](FullMIPSPipelineTB.v).
-
-![Full Pipeline Waveform](images/[waveform-screenshot-filename].png)
-
-![Full Pipeline Waveform](images/[waveform-screenshot-filename].png)
-
-![Full Pipeline Waveform](images/[waveform-screenshot-filename].png)
-
-![Full Pipeline Waveform](images/[waveform-screenshot-filename].png)
-
-![Full Pipeline Waveform](images/[waveform-screenshot-filename].png)
-
-![Full Pipeline Waveform](images/[waveform-screenshot-filename].png)
+# Full MIPS Pipeline 
+![Full Pipeline Waveform](images/FullMIPSPipelineDiagram.png)
+# Instruction Fetch Stage
+![IF Stage](images/IFstage.png)
+# Decode Stage 
+![Decode Stage](images/DecodeStage.png)
+# Execute Stage
+![Execute Stage](images/ExecuteStage.png)
+# Memory Stage
+![Memory Stage](images/MemoryStage.png)
+# Writeback Stage 
+![WB Stage](images/WBStage.png)
 
 | Test Case | Operation | Expected | Observed | Status |
 | ------ | ------ | ------ | ------ | ------ |
@@ -129,8 +129,12 @@ Expected Tcl Console output:
 ├── instr.txt
 ├── data.txt
 ├── images/
-│   ├── [timing-diagram-filename].png
-│   └── [waveform-screenshot-filename].png
+│   ├── DecodeStage.png
+│   ├── ExecuteStage.png
+│   ├── FullMIPSPipeline.png
+│   ├── IFstage.png
+│   ├── MemoryStage.png
+│   └── WBStage.png
 ├── IF-Stage/
 │   ├── fetch.v
 │   ├── pc.v
