@@ -16,7 +16,7 @@
 #### Requirements
 | ID | Requirement | Verification |
 | ------ | ------ | ------ |
-| REQ-01 | **IF:** Fetch instructions from `instrMem` (`instr.txt`), increment PC by 1, and select branch targets on `PCSrc`. | `FullMIPSPipelineTB.v` & `IMEM` console dump |
+| REQ-01 | **IF:** Fetch instructions from `instrMem` (`instr.mem`), increment PC by 1, and select branch targets on `PCSrc`. | `FullMIPSPipelineTB.v` & `IMEM` console dump |
 | REQ-02 | **ID:** Decode opcodes into WB/MEM/EX controls, sign-extend immediates, and support simultaneous reads/WB writes with `REG[0] = 0`. | Waveform inspection of `REG[0:31]` |
 | REQ-03 | **EX:** Select ALU operands/destination register, execute ALU ops, compute branch targets, and latch into `EX/MEM` on `posedge clk`. | Verification of `ADD` results in `REG[1]` |
 | REQ-04 | **MEM:** Read/write `data_memory` (`data.txt`), evaluate `PCSrc = Branch & Zero`, and latch into `MEM/WB` on `posedge clk`. | `LW` values loaded from `DMEM[1:3]` |
@@ -81,7 +81,7 @@ Verified via behavioral simulation in **Xilinx Vivado 2022.2 (`xsim`)** using [`
 #### Reproduction Instructions (Vivado 2022.2)
 1. Create an RTL project and add `FullMIPSPipeline.v` plus all stage `.v` files as **Design Sources**.
 2. Add `FullMIPSPipelineTB.v` as a **Simulation Source** and set it as Top.
-3. Add `instr.txt` (with no header text on line 1) and `data.txt` as Simulation Sources (filter: **All Files (`*.*`)**, check **Copy sources into project**), or place them in `<project>.sim/sim_1/behav/xsim/`.
+3. Add `instr.mem` (with no header text on line 1) and `data.mem` as Simulation Sources (filter: **All Files (`*.*`)**, check **Copy sources into project**), or place them in `<project>.sim/sim_1/behav/xsim/`.
 4. Run **Behavioral Simulation**, add `uut → d1 → rf0 → REG[0:31]` to the waveform, restart, and run for `1010 ns`.
 
 Expected Tcl Console output:
