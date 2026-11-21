@@ -1,4 +1,4 @@
-### Full 5-Stage MIPS Pipeline
+## Full 5-Stage MIPS Pipeline
 ---
 
 #### Design Scope and Assumptions
@@ -126,8 +126,8 @@ Expected Tcl Console output:
 ├── README.md
 ├── FullMIPSPipeline.v
 ├── FullMIPSPipelineTB.v
-├── instr.txt
-├── data.txt
+├── instr.mem
+├── data.mem
 ├── images/
 │   ├── DecodeStage.png
 │   ├── ExecuteStage.png
