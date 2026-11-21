@@ -32,7 +32,7 @@
      +-----------------------------------------------(PCSrc, ex_mem_adder_out)----------+
 ```
 
-![Full Pipeline Waveform](images/FullMIPSPipelineDiagram.png)
+![Full Pipeline Waveform](images/FullMIPSPipeline.png)
 
 ---
 
@@ -57,7 +57,7 @@
 #### Verification
 Verified via behavioral simulation in **Xilinx Vivado 2022.2 (`xsim`)** using [`FullMIPSPipelineTB.v`](FullMIPSPipelineTB.v).
 # Full MIPS Pipeline 
-![Full Pipeline Waveform](images/FullMIPSPipelineDiagram.png)
+![Full Pipeline Waveform](images/FullMIPSPipeline.png)
 # Instruction Fetch Stage
 ![IF Stage](images/IFstage.png)
 # Decode Stage 
